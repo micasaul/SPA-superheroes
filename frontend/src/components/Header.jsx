@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import logo from '../assets/logo.png'
 import cuadro from '../assets/cuadro.png'
 import lineas from '../assets/lineas.png'
@@ -8,6 +8,7 @@ import nubes from '../assets/nubes.png'
 function Header({ botones, onBuscar }) {
   const [filtro, setFiltro] = useState('')
   const navigate = useNavigate()
+  const location = useLocation()
 
   const handleBuscar = () => {
     if (onBuscar) {
@@ -15,6 +16,14 @@ function Header({ botones, onBuscar }) {
     } else {
       navigate(`/?busqueda=${encodeURIComponent(filtro)}`)
     }
+  }
+
+  const getColorActivo = (ruta) => {
+    if (location.pathname === ruta) {
+      if (ruta === '/marvel') return '#e23636'
+      if (ruta === '/dc') return '#0074e8'
+    }
+    return '#111'
   }
 
   return (
@@ -42,6 +51,7 @@ function Header({ botones, onBuscar }) {
               key={i}
               onClick={() => btn.ruta === -1 ? navigate(-1) : navigate(btn.ruta)}
               className="nav-btn"
+              style={{ color: getColorActivo(btn.ruta) }}
             >
               {btn.texto}
             </button>

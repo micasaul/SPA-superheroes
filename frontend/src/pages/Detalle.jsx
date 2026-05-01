@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { getSuperhero, deleteSuperhero } from '../api'
 import Header from '../components/Header'
 import cuadro from '../assets/cuadro.png'
+import logoMarvel from '../assets/logo-marvel.png'
+import logoDC from '../assets/logo-dc.png'
 
 function Detalle() {
   const { id } = useParams()
@@ -91,6 +93,12 @@ function Detalle() {
 
           {/* COLUMNA DERECHA - INFO */}
           <div className="detalle-info">
+
+            <img
+                src={hero.house === 'Marvel' ? logoMarvel : logoDC}
+                alt={hero.house}
+                className="detalle-logo-casa"
+            />
 
             <h1
               className="detalle-nombre"

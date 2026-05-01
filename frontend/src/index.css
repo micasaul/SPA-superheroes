@@ -101,7 +101,7 @@ body {
   position: relative;
   z-index: 0;
   margin-bottom: -230px;
-  
+  opacity: 0.5; 
 }
 
 /* CARDS */
@@ -436,7 +436,7 @@ body {
 /* DETALLE */
 .detalle-section {
   position: relative;
-  padding: 40px;
+  padding: 20px;
   z-index: 1;
   flex: 1;
 }
@@ -514,6 +514,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  min-height: 500px;
 }
 
 .detalle-nombre {
@@ -560,6 +561,16 @@ body {
   display: flex;
   gap: 16px;
   margin-top: 8px;
+}
+
+.detalle-logo-casa {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  max-height: 200px;
+  max-width: 300px;
+  opacity: 0.3;
+  z-index: 0;
 }
 
 .confirmar-box {
