@@ -460,6 +460,8 @@ body {
   aspect-ratio: 1;
   overflow: hidden;
   border: 3px solid #111;
+  max-height: 400px;
+  max-width: 400px;
 }
 
 .detalle-img-grande {
@@ -498,6 +500,8 @@ body {
   cursor: pointer;
   opacity: 0.6;
   transition: opacity 0.2s;
+  max-height: 100px;
+  max-width: 100px;
 }
 
 .carrusel-miniatura.activa {

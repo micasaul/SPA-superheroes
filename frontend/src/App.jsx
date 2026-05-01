@@ -4,6 +4,7 @@ import Marvel from './pages/Marvel'
 import DC from './pages/DC'
 import Agregar from './pages/Agregar'
 import Detalle from './pages/Detalle'
+import Editar from './pages/Editar'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/dc" element={<DC />} />
         <Route path="/agregar" element={<Agregar />} />
         <Route path="/personaje/:id" element={<Detalle />} />
+        <Route path="/editar/:id" element={<Editar />} />
       </Routes>
     </BrowserRouter>
   )
