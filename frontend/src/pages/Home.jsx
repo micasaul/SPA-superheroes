@@ -11,6 +11,7 @@ import colores from '../assets/colores.png'
 function Home() {
   const [superheroes, setSuperheroes] = useState([])
   const [filtro, setFiltro] = useState('')
+  const [busqueda, setBusqueda] = useState('')
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -20,7 +21,7 @@ function Home() {
   }, [])
 
   const filtrados = superheroes.filter(h =>
-    h.name.toLowerCase().includes(filtro.toLowerCase())
+    h.name.toLowerCase().includes(busqueda.toLowerCase())
   )
 
   const getGridStyle = (index) => {
@@ -61,6 +62,7 @@ function Home() {
             placeholder="Buscar..."
             value={filtro}
             onChange={e => setFiltro(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && setBusqueda(filtro)}
             className="search-input"
           />
         </div>
@@ -87,6 +89,7 @@ function Home() {
               superhero={hero}
               orientacion={getOrientacion(index)}
               gridStyle={getGridStyle(index)}
+              onClick={() => navigate(`/personaje/${hero._id}`)}
             />
           ))}
         </div>

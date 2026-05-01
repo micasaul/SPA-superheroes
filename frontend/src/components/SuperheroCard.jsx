@@ -1,13 +1,13 @@
 import cuadradoCard from '../assets/cuadrado-card.png'
 import cuadradoCardVertical from '../assets/cuadrado-card-vertical.png'
 
-function SuperheroCard({ superhero, orientacion, gridStyle }) {
+function SuperheroCard({ superhero, orientacion, gridStyle, onClick }) {
   const biografiaTruncada = superhero.biography.length > 120
     ? superhero.biography.substring(0, 120) + '...'
     : superhero.biography
 
   return (
-    <div className={`card-wrapper card-${orientacion}`} style={gridStyle}>
+    <div className={`card-wrapper card-${orientacion}`} style={gridStyle} onClick={onClick}>
       <img
         src={orientacion === 'vertical' ? cuadradoCardVertical : cuadradoCard}
         alt=""

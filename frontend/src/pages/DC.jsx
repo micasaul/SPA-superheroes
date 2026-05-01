@@ -82,6 +82,7 @@ function DC() {
               superhero={hero}
               orientacion={getOrientacion(index)}
               gridStyle={getGridStyle(index)}
+              onClick={() => navigate(`/personaje/${hero._id}`)}
             />
           ))}
         </div>
