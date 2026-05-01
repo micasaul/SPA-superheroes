@@ -20,7 +20,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 46px 40px 16px 40px;
+  padding: 36px 40px 6px 40px;
 }
 
 .header-logo {
@@ -101,6 +101,7 @@ body {
   position: relative;
   z-index: 0;
   margin-bottom: -230px;
+  
 }
 
 /* CARDS */

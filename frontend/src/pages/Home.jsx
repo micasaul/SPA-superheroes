@@ -1,24 +1,28 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { getSuperheroes } from '../api'
+import Header from '../components/Header'
 import SuperheroCard from '../components/SuperheroCard'
-import logo from '../assets/logo.png'
 import cuadro from '../assets/cuadro.png'
-import lineas from '../assets/lineas.png'
-import nubes from '../assets/nubes.png'
 import colores from '../assets/colores.png'
 
 function Home() {
   const [superheroes, setSuperheroes] = useState([])
-  const [filtro, setFiltro] = useState('')
   const [busqueda, setBusqueda] = useState('')
   const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     getSuperheroes()
       .then(res => setSuperheroes(res.data))
       .catch(err => console.error(err))
   }, [])
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    const q = params.get('busqueda')
+    if (q) setBusqueda(decodeURIComponent(q))
+  }, [location.search])
 
   const filtrados = superheroes.filter(h =>
     h.name.toLowerCase().includes(busqueda.toLowerCase())
@@ -53,32 +57,13 @@ function Home() {
     <div className="page">
 
       {/* HEADER */}
-      <header className="header">
-        <button onClick={() => navigate('/')} className="nav-btn"><img src={logo} alt="Logo" className="header-logo" /></button>
-        <div className="search-wrapper">
-          <img src={cuadro} alt="" className="search-bg" />
-          <input
-            type="text"
-            placeholder="Buscar..."
-            value={filtro}
-            onChange={e => setFiltro(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && setBusqueda(filtro)}
-            className="search-input"
-          />
-        </div>
-      </header>
-
-      {/* NAVEGACIÓN */}
-      <div className="nav-wrapper">
-        <img src={lineas} alt="" className="nav-lineas" />
-        <div className="nav-buttons">
-          <button onClick={() => navigate('/marvel')} className="nav-btn">Marvel</button>
-          <button onClick={() => navigate('/dc')} className="nav-btn">DC</button>
-        </div>
-      </div>
-
-      {/* NUBES */}
-      <img src={nubes} alt="" className="nubes" />
+      <Header
+        botones={[
+          { texto: 'Marvel', ruta: '/marvel' },
+          { texto: 'DC', ruta: '/dc' }
+        ]}
+        onBuscar={setBusqueda}
+      />
 
       {/* CARDS */}
       <main className="cards-section">

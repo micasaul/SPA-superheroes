@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getSuperhero, deleteSuperhero } from '../api'
-import logo from '../assets/logo.png'
+import Header from '../components/Header'
 import cuadro from '../assets/cuadro.png'
-import lineas from '../assets/lineas.png'
-import nubes from '../assets/nubes.png'
 
 function Detalle() {
   const { id } = useParams()
@@ -50,20 +48,12 @@ function Detalle() {
     <div className="page">
 
       {/* HEADER */}
-      <header className="header">
-        <button onClick={() => navigate('/')} className="nav-btn"><img src={logo} alt="Logo" className="header-logo" /></button>
-      </header>
-
-      {/* NAVEGACIÓN */}
-      <div className="nav-wrapper">
-        <img src={lineas} alt="" className="nav-lineas" />
-        <div className="nav-buttons">
-          <button onClick={() => navigate(-1)} className="nav-btn">Volver</button>
-        </div>
-      </div>
-
-      {/* NUBES */}
-      <img src={nubes} alt="" className="nubes" />
+      <Header
+        botones={[
+          { texto: 'Marvel', ruta: '/marvel' },
+          { texto: 'DC', ruta: '/dc' }
+        ]}
+      />
 
       {/* DETALLE */}
       <main className="detalle-section">

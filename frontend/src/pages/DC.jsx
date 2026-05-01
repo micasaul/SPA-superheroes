@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getDC } from '../api'
+import Header from '../components/Header'
 import SuperheroCard from '../components/SuperheroCard'
-import logo from '../assets/logo.png'
 import cuadro from '../assets/cuadro.png'
-import lineas from '../assets/lineas.png'
-import nubes from '../assets/nubes.png'
 import colores from '../assets/colores.png'
 
 function DC() {
   const [superheroes, setSuperheroes] = useState([])
   const [filtro, setFiltro] = useState('')
+  const [busqueda, setBusqueda] = useState('')
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -20,7 +19,7 @@ function DC() {
   }, [])
 
   const filtrados = superheroes.filter(h =>
-    h.name.toLowerCase().includes(filtro.toLowerCase())
+    h.name.toLowerCase().includes(busqueda.toLowerCase())
   )
 
   const getGridStyle = (index) => {
@@ -50,29 +49,13 @@ function DC() {
 
   return (
     <div className="page">
-      <header className="header">
-        <button onClick={() => navigate('/')} className="nav-btn"><img src={logo} alt="Logo" className="header-logo" /></button>
-        <div className="search-wrapper">
-          <img src={cuadro} alt="" className="search-bg" />
-          <input
-            type="text"
-            placeholder="Buscar..."
-            value={filtro}
-            onChange={e => setFiltro(e.target.value)}
-            className="search-input"
-          />
-        </div>
-      </header>
-
-      <div className="nav-wrapper">
-        <img src={lineas} alt="" className="nav-lineas" />
-        <div className="nav-buttons">
-          <button onClick={() => navigate('/marvel')} className="nav-btn">Marvel</button>
-          <button onClick={() => navigate('/dc')} className="nav-btn">DC</button>
-        </div>
-      </div>
-
-      <img src={nubes} alt="" className="nubes" />
+      <Header
+        botones={[
+          { texto: 'Marvel', ruta: '/marvel' },
+          { texto: 'DC', ruta: '/dc' }
+        ]}
+        onBuscar={setBusqueda}
+      />
 
       <main className="cards-section">
         <div className="cards-grid">
