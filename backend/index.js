@@ -8,6 +8,9 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+const superheroesRouter = require('./routes/superheroes')
+app.use('/api/superheroes', superheroesRouter)
+
 app.get('/health', async (req, res) => {
   const mongoStatus = mongoose.connection.readyState === 1 ? 'conectado' : 'desconectado'
   res.json({ servidor: 'ok', mongo: mongoStatus })
