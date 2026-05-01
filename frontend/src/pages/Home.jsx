@@ -53,7 +53,7 @@ function Home() {
 
       {/* HEADER */}
       <header className="header">
-        <img src={logo} alt="Logo" className="header-logo" />
+        <button onClick={() => navigate('/')} className="nav-btn"><img src={logo} alt="Logo" className="header-logo" /></button>
         <div className="search-wrapper">
           <img src={cuadro} alt="" className="search-bg" />
           <input
