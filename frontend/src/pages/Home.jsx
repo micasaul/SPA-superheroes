@@ -95,7 +95,7 @@ function Home() {
         <div className="agregar-wrapper">
           <div className="agregar-fill" />
           <img src={cuadro} alt="" className="agregar-bg" />
-          <button className="agregar-btn">+ Agregar personaje</button>
+          <button className="agregar-btn" onClick={() => navigate('/agregar')}>+ Agregar personaje</button>
         </div>
       </main>
 

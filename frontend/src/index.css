@@ -250,3 +250,155 @@ body {
   object-fit: contain;
   display: block;
 }
+
+/* FORMULARIO */
+.form-section {
+  position: relative;
+  padding: 40px;
+  z-index: 1;
+  flex: 1;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.form-fotos {
+  display: flex;
+  flex-direction: column;
+}
+
+.fotos-box {
+  border: 3px solid #111;
+  background: #fff;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 300px;
+}
+
+.fotos-titulo {
+  font-size: 18px;
+  font-weight: bold;
+  color: #111;
+  text-align: center;
+}
+
+.foto-input-wrapper {
+  position: relative;
+  height: 44px;
+}
+
+.foto-input-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.foto-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 14px;
+  padding: 20px;
+  color: #222;
+}
+
+.foto-agregar-btn {
+  background: transparent;
+  border: none;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 14px;
+  cursor: pointer;
+  color: #111;
+  text-align: left;
+}
+
+.form-campos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.campo-wrapper {
+  position: relative;
+  height: 44px;
+}
+
+.campo-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.campo-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 15px;
+  padding: 15px;
+  color: #222;
+}
+
+.form-fila {
+  display: flex;
+  gap: 16px;
+}
+
+.campo-anio {
+  flex: 1;
+}
+
+.campo-casa {
+  flex: 1;
+}
+
+.campo-bio {
+  height: 140px;
+}
+
+.campo-textarea {
+  resize: none;
+  padding: 15px;
+}
+
+.form-guardar {
+  align-self: flex-end;
+}
+
+/* MENSAJES */
+.mensaje {
+  max-width: 900px;
+  margin: 0 auto 24px;
+  padding: 12px 20px;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 15px;
+  font-weight: bold;
+  border: 3px solid #111;
+}
+
+.mensaje-exito {
+  background-color: #c8f7c5;
+  color: #1a7a17;
+}
+
+.mensaje-error {
+  background-color: #f7c5c5;
+  color: #7a1717;
+}
