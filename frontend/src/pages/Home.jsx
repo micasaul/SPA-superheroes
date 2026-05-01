@@ -23,6 +23,31 @@ function Home() {
     h.name.toLowerCase().includes(filtro.toLowerCase())
   )
 
+  const getGridStyle = (index) => {
+    const pos = index % 8
+    const grupo = Math.floor(index / 8)
+    const offset = grupo * 4
+
+    const estilos = [
+      { gridColumn: '1 / 3', gridRow: `${1 + offset} / ${2 + offset}` },
+      { gridColumn: '1 / 3', gridRow: `${2 + offset} / ${3 + offset}` },
+      { gridColumn: '3 / 4', gridRow: `${1 + offset} / ${3 + offset}` },
+      { gridColumn: '4 / 5', gridRow: `${1 + offset} / ${3 + offset}` },
+      { gridColumn: '1 / 2', gridRow: `${3 + offset} / ${5 + offset}` },
+      { gridColumn: '2 / 3', gridRow: `${3 + offset} / ${5 + offset}` },
+      { gridColumn: '3 / 5', gridRow: `${3 + offset} / ${4 + offset}` },
+      { gridColumn: '3 / 5', gridRow: `${4 + offset} / ${5 + offset}` },
+    ]
+    return estilos[pos]
+  }
+
+  const getOrientacion = (index) => {
+    const pos = index % 8
+    return pos === 0 || pos === 1 || pos === 6 || pos === 7
+      ? 'horizontal'
+      : 'vertical'
+  }
+
   return (
     <div className="page">
 
@@ -56,8 +81,13 @@ function Home() {
       {/* CARDS */}
       <main className="cards-section">
         <div className="cards-grid">
-          {filtrados.map(hero => (
-            <SuperheroCard key={hero._id} superhero={hero} />
+          {filtrados.map((hero, index) => (
+            <SuperheroCard
+              key={hero._id}
+              superhero={hero}
+              orientacion={getOrientacion(index)}
+              gridStyle={getGridStyle(index)}
+            />
           ))}
         </div>
 

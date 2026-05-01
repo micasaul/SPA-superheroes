@@ -14,7 +14,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 40px;
+  padding: 26px 40px;
 }
 
 .header-logo {
@@ -51,7 +51,7 @@ body {
 /* NAVEGACIÓN */
 .nav-wrapper {
   position: relative;
-  height: 60px;
+  height: auto;
   margin-bottom: 0;
   display: block;
   line-height: 0;
@@ -65,7 +65,7 @@ body {
 
 .nav-buttons {
   position: absolute;
-  top: 65%;
+  top: 60%;
   right: 120px;
   transform: translateY(-50%);
   display: flex;
@@ -91,29 +91,50 @@ body {
 /* NUBES */
 .nubes {
   width: 100%;
-  object-fit: contain;
-  margin-top: 0;
   display: block;
+  position: relative;
+  z-index: 0;
+  margin-bottom: -230px;
 }
 
 /* CARDS */
 .cards-section {
-  background-color: #ffffff;
+  width: 100%;
   padding: 40px;
-  min-height: 400px;
+  display: block;
+  position: relative;
+  z-index: 0;
+  margin-bottom: -120px;
 }
 
 .cards-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 160px;
+  gap: 12px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .card-wrapper {
   position: relative;
-  width: 100%;
-  padding-top: 120%;
   cursor: pointer;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+
+.card-horizontal {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.card-vertical {
+  grid-column: span 1;
+  grid-row: span 2;
 }
 
 .card-bg {
@@ -125,39 +146,51 @@ body {
   object-fit: fill;
 }
 
-.card-content {
+.card-bg-rotada {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  width: 332px;
+  height: 160px;
+  transform: translate(-50%, -50%) rotate(90deg);
+  object-fit: fill;
+}
+
+.card-content {
+  position: relative;
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
+  z-index: 1;
+  overflow: hidden;
 }
 
 .card-name {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   color: #111;
 }
 
 .card-realname {
-  font-size: 14px;
+  font-size: 12px;
   color: #555;
   font-style: italic;
 }
 
 .card-bio {
-  font-size: 13px;
+  font-size: 11px;
   color: #333;
-  line-height: 1.5;
+  line-height: 1.4;
+  overflow: hidden;
 }
 
 /* BOTÓN AGREGAR */
 .agregar-wrapper {
   position: relative;
+  z-index: 1;
   width: 260px;
   height: 52px;
   margin: 48px auto 0;
@@ -195,7 +228,8 @@ body {
 
 /* FOOTER */
 .footer {
-  margin-top: 40px;
+  position: relative;
+  z-index: 0;
 }
 
 .footer-colores {
