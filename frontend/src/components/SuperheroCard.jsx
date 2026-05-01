@@ -13,10 +13,17 @@ function SuperheroCard({ superhero, orientacion, gridStyle }) {
         alt=""
         className="card-bg"
       />
+      {superhero.images?.[0] && (
+        <img
+          src={superhero.images[0]}
+          alt={superhero.name}
+          className="card-hero-img"
+        />
+      )}
       <div className="card-overlay" />
       <div className="card-content">
-        <h3 className="card-name">{superhero.name}</h3>
         <div className="card-hover-content">
+          <h3 className="card-name">{superhero.name}</h3>
           {superhero.realName && (
             <p className="card-realname">{superhero.realName}</p>
           )}
