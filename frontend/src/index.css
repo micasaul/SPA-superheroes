@@ -163,6 +163,7 @@ body {
   width: 95%;
   height: 95%;
   object-fit: cover;
+  object-position: center top;
   z-index: 1;
 }
 
@@ -443,10 +444,11 @@ body {
 
 .detalle-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr);
   gap: 40px;
   max-width: 900px;
   margin: 0 auto;
+  align-items: start;
 }
 
 .detalle-fotos {
@@ -468,6 +470,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
 }
 
 .detalle-carrusel {
@@ -490,10 +493,12 @@ body {
   display: flex;
   gap: 8px;
   flex: 1;
+  min-height: 100px;
 }
 
 .carrusel-miniatura {
   flex: 1;
+  min-width: 0;
   aspect-ratio: 1;
   object-fit: cover;
   border: 2px solid #111;
@@ -507,6 +512,13 @@ body {
 .carrusel-miniatura.activa {
   opacity: 1;
   border-color: #e23636;
+}
+
+.carrusel-vacio {
+  flex: 1;
+  min-width: 0;
+  aspect-ratio: 1;
+  border: 2px dashed #ccc;
 }
 
 .detalle-info {

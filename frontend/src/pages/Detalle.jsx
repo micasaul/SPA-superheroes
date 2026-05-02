@@ -44,7 +44,7 @@ function Detalle() {
   const bioLarga = palabras.length > 90
   const bioCorta = palabras.slice(0, 90).join(' ') + '...'
   const inicioCarrusel = Math.floor(fotoActual / 3) * 3
-  const fotosCarrusel = hero.images.slice(inicioCarrusel, inicioCarrusel + 3)
+  const fotosCarrusel = [0, 1, 2].map(i => hero.images[inicioCarrusel + i] || null)
 
   return (
     <div className="page">
@@ -77,13 +77,17 @@ function Detalle() {
                 <button className="carrusel-btn" onClick={() => irFoto(-1)}>‹</button>
                 <div className="carrusel-miniaturas">
                   {fotosCarrusel.map((img, i) => (
-                    <img
-                      key={i}
-                      src={img}
-                      alt=""
-                      className={`carrusel-miniatura ${fotoActual === inicioCarrusel + i ? 'activa' : ''}`}
-                      onClick={() => setFotoActual(inicioCarrusel + i)}
-                    />
+                    img ? (
+                      <img
+                        key={i}
+                        src={img}
+                        alt=""
+                        className={`carrusel-miniatura ${fotoActual === inicioCarrusel + i ? 'activa' : ''}`}
+                        onClick={() => setFotoActual(inicioCarrusel + i)}
+                      />
+                    ) : (
+                      <div key={i} className="carrusel-miniatura carrusel-vacio" />
+                    )
                   ))}
                 </div>
                 <button className="carrusel-btn" onClick={() => irFoto(1)}>›</button>
