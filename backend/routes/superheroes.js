@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Superhero = require('../models/Superhero')
+const Superhero = require('../models/superhero')
 
 // GET superheroes
 router.get('/', async (req, res) => {

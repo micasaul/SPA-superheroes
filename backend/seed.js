@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Superhero = require('./models/Superhero')
+const Superhero = require('./models/superhero')
 require('dotenv').config()
 
 const superheroes = [

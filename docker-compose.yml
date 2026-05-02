@@ -7,5 +7,24 @@ services:
     volumes:
       - mongo_data:/data/db
 
+  backend:
+    build: ./backend
+    container_name: superheroes_backend
+    ports:
+      - "3001:3001"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/superheroes
+      - PORT=3001
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./frontend
+    container_name: superheroes_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
 volumes:
   mongo_data:
